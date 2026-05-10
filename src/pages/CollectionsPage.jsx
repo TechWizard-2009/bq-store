@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import ProductCard from '../components/ProductCard';
 import Footer from '../components/Footer';

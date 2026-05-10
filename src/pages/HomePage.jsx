@@ -1,6 +1,6 @@
-import { BottleSVG } from '../components/BottleSVG';
 import ProductCard from '../components/ProductCard';
 import { useStore } from '../StoreContext';
+import { heroImages } from '../imageMap';
 
 export default function HomePage({ setPage }) {
   const { products } = useStore();
@@ -21,11 +21,7 @@ export default function HomePage({ setPage }) {
           </div>
         </div>
         <div className="hero-img-wrap">
-          <div className="hero-img-placeholder">
-            <div style={{ textAlign: "center" }}>
-              <BottleSVG color="#7a6040" accent="#c9a84c" height={360} />
-            </div>
-          </div>
+          <img src={heroImages.home} alt="Hero" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
         </div>
       </section>
 

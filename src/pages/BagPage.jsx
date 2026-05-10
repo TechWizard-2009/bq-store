@@ -1,8 +1,7 @@
 import { useCart } from '../CartContext';
 import Footer from '../components/Footer';
-import { BottleSVG } from '../components/BottleSVG';
-import { cardPalettes } from '../data';
 import { BagIcon, ChevronLeft } from '../components/Icons';
+import { productImages } from '../imageMap';
 
 export default function BagPage({ setPage }) {
   const { items, removeFromCart, updateQty, totalPrice } = useCart();
@@ -17,7 +16,7 @@ export default function BagPage({ setPage }) {
       {items.length === 0 ? (
         <div style={{ padding: "0 80px 80px", textAlign: "center" }}>
           <div style={{ opacity: 0.3, marginBottom: 32 }}>
-            <BottleSVG color="#6b6444" height={200} />
+            <img src={productImages[1]} alt="" style={{ width: 200, height: 200, objectFit: "contain" }} />
           </div>
           <p style={{ color: "var(--text-muted)", marginBottom: 24, fontSize: "0.95rem" }}>Your fragrance collection awaits.</p>
           <button className="btn-gold" onClick={() => setPage("collections")}>Browse Collection</button>
@@ -27,11 +26,10 @@ export default function BagPage({ setPage }) {
           <div style={{ display: "grid", gridTemplateColumns: "1fr 360px", gap: 48, alignItems: "start" }}>
             <div>
               {items.map(item => {
-                const pal = cardPalettes[item.palette || 0];
                 return (
                   <div key={item.id} style={{ display: "flex", gap: 20, padding: "20px 0", borderBottom: "1px solid var(--border)" }}>
-                    <div style={{ width: 100, height: 100, borderRadius: 6, background: pal.bg, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                      <BottleSVG color={pal.color} height={80} />
+                    <div style={{ width: 100, height: 100, borderRadius: 6, overflow: "hidden", flexShrink: 0 }}>
+                      <img src={productImages[item.id]} alt={item.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     </div>
                     <div style={{ flex: 1 }}>
                       <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "1.1rem", fontWeight: 600, marginBottom: 2 }}>{item.name}</div>

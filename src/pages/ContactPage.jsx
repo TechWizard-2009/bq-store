@@ -1,14 +1,14 @@
 import Footer from '../components/Footer';
-import { BottleSVG } from '../components/BottleSVG';
 import { MapPinIcon, PhoneIcon, MailIcon } from '../components/Icons';
+import { heroImages } from '../imageMap';
 
 export default function ContactPage({ setPage }) {
   return (
     <div>
       <div className="contact-hero">
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg,#1a1208,#2a1a08,#1a0a08)", opacity: 0.85, zIndex: 0 }} />
-        <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "flex-end", paddingRight: 80, zIndex: 0, opacity: 0.5 }}>
-          <BottleSVG color="#7a5030" accent="#c9a84c" height={300} />
+        <div style={{ position: "absolute", inset: 0, zIndex: 0, opacity: 0.3 }}>
+          <img src={heroImages.contact} alt="Contact" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
         </div>
         <div className="contact-hero-text" style={{ position: "relative", zIndex: 2 }}>
           <h1 className="contact-hero-title">Contact <span>Us</span></h1>

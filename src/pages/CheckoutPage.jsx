@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { useCart } from '../CartContext';
 import { useStore } from '../StoreContext';
 import Footer from '../components/Footer';
-import { BottleSVG } from '../components/BottleSVG';
-import { cardPalettes } from '../data';
+import { productImages } from '../imageMap';
 
 export default function CheckoutPage({ setPage }) {
   const { items, totalPrice, totalItems } = useCart();
@@ -130,11 +129,10 @@ export default function CheckoutPage({ setPage }) {
             <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "1.2rem", fontWeight: 600, marginBottom: 20 }}>Order Summary</h3>
 
             {items.map(item => {
-              const pal = cardPalettes[item.palette || 0];
               return (
                 <div key={item.id} style={{ display: "flex", gap: 12, marginBottom: 16, paddingBottom: 16, borderBottom: "1px solid var(--border)" }}>
-                  <div style={{ width: 56, height: 56, borderRadius: 4, background: pal.bg, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <BottleSVG color={pal.color} height={48} />
+                  <div style={{ width: 56, height: 56, borderRadius: 4, overflow: "hidden", flexShrink: 0 }}>
+                    <img src={productImages[item.id]} alt={item.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "0.95rem", fontWeight: 600, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{item.name}</div>

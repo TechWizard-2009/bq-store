@@ -1,16 +1,14 @@
 import { useState } from 'react';
 import { HeartIcon } from './Icons';
-import { BottleSVG } from './BottleSVG';
-import { cardPalettes } from '../data';
+import { productImages } from '../imageMap';
 
 export default function ProductCard({ p, onClick, showType = false }) {
   const [liked, setLiked] = useState(false);
-  const pal = cardPalettes[p.palette || 0];
   return (
     <div className="product-card coll-card" onClick={onClick}>
       <div style={{ position: "relative" }}>
-        <div className="product-card-img-placeholder" style={{ background: pal.bg, height: 220 }}>
-          <BottleSVG color={pal.color} height={180} />
+        <div className="product-card-img" style={{ height: 220 }}>
+          <img src={productImages[p.id]} alt={p.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
         </div>
         {p.badge === "New" && <span className="product-badge">New</span>}
         {p.badge === "exclusive" && <span className="product-badge exclusive" style={{ textTransform: "uppercase", fontSize: "0.6rem" }}>Exclusive</span>}
